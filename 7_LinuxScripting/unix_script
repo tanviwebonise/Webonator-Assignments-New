@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Host name of system :"$HOSTNAME
+echo "Type and version of Operating system :"$(uname -a)
+echo "full path of current directory :" ~
+echo "other users logged into the system :"$(users)
+echo "groups you belong to :"$(id -Gn)
+echo "List of all files :"$(ls -R $HOME | grep -v ^d)
+echo $(date)

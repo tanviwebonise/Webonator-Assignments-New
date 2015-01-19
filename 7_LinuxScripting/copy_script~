@@ -1,0 +1,5 @@
+#!/bin/bash
+cd assignment
+echo $(cp -a public_html public_html/)
+cd public_html
+mv public_html new_public_html

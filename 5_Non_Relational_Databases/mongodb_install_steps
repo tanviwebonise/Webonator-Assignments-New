@@ -1,0 +1,67 @@
+***********************Installation Steps*********************
+
+1.sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+
+2.echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+
+3.sudo apt-get update
+
+4.sudo apt-get install -y mongodb-org
+
+5.udo apt-get install -y mongodb-org=2.6.1 mongodb-org-server=2.6.1 mongodb-org-shell=2.6.1 mongodb-org-mongos=2.6.1 mongodb-org-tools=2.6.1
+
+6. mongod --version
+
+7.sudo service mongod start
+
+8. mongo
+
+*******************Queries performed************
+1.show dbs
+
+2.use db
+switched to db db
+
+3.db.createCollection("students",{});
+{ "ok" : 1 }
+
+4. db.students.insert( { name: "tanvi", password: "123456" } )
+WriteResult({ "nInserted" : 1 })
+> db.students.insert( { name: "ashvini", password: "128656" } )
+WriteResult({ "nInserted" : 1 })
+
+
+5. db.students.find()
+{ "_id" : ObjectId("54670d1f2e08549710dae2b3"), "name" : "tanvi", "password" : "123456" }
+{ "_id" : ObjectId("54670d5d2e08549710dae2b4"), "name" : "ashvini", "password" : "128656" }
+
+6. db.students.find().pretty()
+{
+	"_id" : ObjectId("54670d1f2e08549710dae2b3"),
+	"name" : "tanvi",
+	"password" : "123456"
+}
+{
+	"_id" : ObjectId("54670d5d2e08549710dae2b4"),
+	"name" : "ashvini",
+	"password" : "128656"
+}
+
+7. db.students.update({'name':'tanvi'},{$set:{'name':'riya'}})
+db.students.find().pretty()
+{
+	"_id" : ObjectId("54670d1f2e08549710dae2b3"),
+	"name" : "riya",
+	"password" : "123456"
+}
+{
+	"_id" : ObjectId("54670d5d2e08549710dae2b4"),
+	"name" : "ashvini",
+	"password" : "128656"
+}
+
+db.students.find({},{"name":1,_id:0}).sort({"name":-1})
+{ "name" : "ashvini" }
+{ "name" : "riya" }
+
+

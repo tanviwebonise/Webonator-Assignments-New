@@ -1,0 +1,127 @@
+mysql> create database db;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use db;
+Database changed
+
+
+create table users
+(id int NOT NULL PRIMARY KEY,name varchar(255),email varchar(255),password varchar(255),isAdmin int);
+Query OK, 0 rows affected (0.09 sec)
+
+create table assessments
+(id int NOT NULL PRIMARY KEY,name varchar(255),min_marks int,max_marks int,duration int);
+Query OK, 0 rows affected (0.09 sec)
+
+create table questions
+(id int NOT NULL PRIMARY KEY,content varchar(255),is_Image int);
+Query OK, 0 rows affected (0.10 sec)
+
+create table answers(id int NOT NULL PRIMARY KEY,option_content varchar(255),is_image int);
+Query OK, 0 rows affected (0.09 sec)
+
+create table assessments_mapping
+(id int NOT NULL PRIMARY KEY,question_id int,anwser_id int,assessment_id int, FOREIGN KEY(question_id) REFERENCES questions(id),FOREIGN KEY(anwser_id) REFERENCES answers(id),FOREIGN KEY(assessment_id) REFERENCES assessments(id),answer_flag int );
+Query OK, 0 rows affected (0.13 sec)
+
+
+create table given_assessments(
+id int NOT NULL PRIMARY KEY,
+user_id int,
+FOREIGN KEY (user_id) REFERENCES users(id),
+assess_map_id int,
+FOREIGN KEY (assess_map_id) REFERENCES assessments_mapping(id),
+user_answer int,
+score_count int);
+Query OK, 0 rows affected (0.11 sec)
+
+ select *from users;
++----+---------+------------------+----------+---------+
+| id | name    | email            | password | isAdmin |
++----+---------+------------------+----------+---------+
+|  1 | divya   | divya.webonise   | 12345    |       0 |
+|  2 | tanvi   | tanvi.webonise   | tanvi123 |       1 |
+|  3 | ashvini | ashvini.webonise | 123ash   |       0 |
+|  4 | poonam  | poonam.webonise  | 123poo   |       0 |
+|  5 | riya    | riya.webonise    | 123riya  |       0 |
++----+---------+------------------+----------+---------+
+
+mysql> select *from questions;
++-----+---------------------------------------------------------------------------------------------+----------+
+| id  | content                                                                                     | is_Image |
++-----+---------------------------------------------------------------------------------------------+----------+
+| 101 | what is capital of India?                                                                   |        0 |
+| 102 | How will you print 
+ on the screen?                                                         |        0 |
+| 103 | If the two strings are identical, then strcmp() function returns?                           |        0 |
+| 104 | The average of 20 numbers is zero. Of them, at the most, how many may be greater than zero? |        0 |
++-----+---------------------------------------------------------------------------------------------+----------+
+
+mysql> select *from answers;
++------+----------------+----------+
+| id   | option_content | is_image |
++------+----------------+----------+
+| 1001 | delhi          |        0 |
+| 1002 | mumbai         |        0 |
+| 1003 | kolkata        |        0 |
+| 1004 | chennai        |        0 |
+| 1005 | printf("
+")    |        0 |
+| 1006 | echo"\n"       |        0 |
+| 1007 | printf("\n")   |        0 |
+| 1008 | -1             |        0 |
+| 1009 | yes            |        0 |
+| 1010 | 0              |        0 |
++------+----------------+----------+
+
+select *from assessments_mapping;
++------+-------------+-----------+---------------+-------------+
+| id   | question_id | anwser_id | assessment_id | answer_flag |
++------+-------------+-----------+---------------+-------------+
+| 3001 |         101 |      1001 |          2001 |           1 |
+| 3002 |         101 |      1002 |          2001 |           0 |
+| 3003 |         101 |      1003 |          2001 |           0 |
+| 3004 |         102 |      1007 |          2002 |           1 |
+| 3005 |         102 |      1005 |          2002 |           0 |
+| 3006 |         103 |      1006 |          2002 |           1 |
++------+-------------+-----------+---------------+-------------+
+6 rows in set (0.00 sec)
+
+
+select *from given_assessments;
++------+---------+---------------+-------------+-------------+
+| id   | user_id | assess_map_id | user_answer | score_count |
++------+---------+---------------+-------------+-------------+
+| 5001 |       1 |          3001 |           1 |           1 |
+| 5002 |       1 |          3004 |           1 |           1 |
+| 5003 |       2 |          3001 |           1 |           1 |
+| 5004 |       1 |          3001 |           1 |           1 |
+| 5005 |       2 |          3001 |           1 |           1 |
++------+---------+---------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+******************TEST CASE 2(create view)*************************
+
+create view v_score as
+select u.name,user_id,assessment_id,sum(score_count) as score from users as u ,given_assessments as ga,assessments_mapping am,assessments a where u.id=ga.user_id AND am.id=ga.assess_map_id AND a.id=am.assessment_id group by user_id,assessment_id;
+Query OK, 0 rows affected (0.04 sec)
+
+select *from v_score;
++-------+---------+---------------+-------+
+| name  | user_id | assessment_id | score |
++-------+---------+---------------+-------+
+| divya |       1 |          2001 |     2 |
+| divya |       1 |          2002 |     1 |
+| tanvi |       2 |          2001 |     2 |
++-------+---------+---------------+-------+
+3 rows in set (0.00 sec)
+
+****************TEST CASE 3(pivot)***********
+select *
+ from (
+ 	select name,user_id,assessment_id,content,score_count from 		given_assessments as ga,assessments_mapping as am,questions as 		q,users as u where u.id=ga.user_id AND q.id=am.question_id AND 		am.id=ga.assess_map_id)
+ as s 
+ PIVOT
+ (SUM(score_count) FOR[content] IN(select content from questions)
+  )AS pivot;
+

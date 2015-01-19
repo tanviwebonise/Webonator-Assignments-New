@@ -1,0 +1,7 @@
+db.assessments.find().pretty()
+{
+	"_id" : ObjectId("546756f62e08549710dae2bd"),
+	"id" : "1001",
+	"name" : "c programming",
+	" duration" : "20",
+	"questions" : {

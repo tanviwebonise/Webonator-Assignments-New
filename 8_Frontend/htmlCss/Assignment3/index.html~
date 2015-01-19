@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Webonise lab</title>
+	<link rel="stylesheet" type="text/css" href="Css/style.css">	
+	</head>
+	<body>
+	
+        	<div id="navigation">
+			<div class="container">
+				<a class="logo" href="index.html" alt="ArtForth Logo"></a>
+				<ul>
+						
+  					<li><a href="index.html" alt="gallary">THE GALLARY</a></li>
+						
+  					<li><a href="index.html" alt="how it works">HOW IT WORKS</a></li>
+						
+  					<li><a href="index.html" alt="help">HELP</a></li>
+					<li class="clear"></li>
+						
+				</ul>
+				<div class="clear"></div>
+
+			</div>
+		</div>
+		<div id="banner">
+			<div class="container">
+				<img src="images/header_image.png "/>	
+					<div class="gallary">
+							<h1>Your Moods Change</h>
+							<h2>So Should the art on your wall!</h2>
+							
+							<div class="whiteButton"><a href="index.html" alt="Gallary">VIEW GALLARY</a></div>
+							
+							<div class="yellowButton"><a href="index.html" alt="join now">JOIN NOW</a></div>
+							
+					</div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="container">
+				<h4>HOW IT WORKS</h4>
+					<ul>
+						<li><div class="round"><img src="images/computer.png" /></div><p>Add art to your queue online</p></li>
+						<li><div class="round"><img src="images/Home.png" /></div><p>Receive art at your home in order you specify</p></li>
+						<li><div class="round"><img src="images/message.png" /></div><p>Keep art for as long as you like.Buy only what you left</p></li>
+						<li><div class="round"><img src="images/return.png" /></div><p>Return art to receive the next piece in your queue</p></li>
+						<li class="clear"></li>
+					</ul>
+					<div class="clear"></div>
+					
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container">
+				<ul class="menuList">
+						<li class="active_home"><a href="index.html" alt="Home">HOME</a></li>
+  						<li><a href="index.html" alt="gallary" >THE GALLARY</a></li>
+						<li><a href="index.html" alt="how it works" >HOW IT WORKS</a></li>
+						<li><a href="index.html" alt="help" >HELP</a></li>
+						
+						
+				</ul>
+				<ul class="share">
+						<li><a class="logoCircle" href="index.html" alt="google"><img src="images/google.png" /></a></li>
+						<li><a class="logoCircle" href="index.html" alt="pinterset"><img src="images/pinterest.png" /></a></li>
+						<li><a class="logoCircle" href="index.html" alt="twitter"><img src="images/twitter.png" /></a></li>
+						<li><a class="logoCircle" href="index.html" alt="facebook"><img src="images/facebook.png" /></a></li>
+						
+				</ul>
+				<div class="clear"></div>
+						
+				<div class="copyright">
+					&copy 2013 Art Forth All Rights Reserved 
+				</div>
+						
+				<ul class="links">
+						<li><a class="border" href="index.html" alt="terms of service">Terms of service</a></li> 
+						<li><a class="border" href="index.html" alt="privacy policy">Privacy Policy</a></li> 
+						<li><a href="index.html" alt="sitemap">Sitemap</a></li>
+						<li class="clear"></li>
+				</ul>
+							
+				<div class="clear"></div>
+						
+					
+			</div>
+<div class="clear"></div>
+						
+		</div>
+			
+	</body>
+	
+</html>
+

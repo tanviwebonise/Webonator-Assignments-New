@@ -1,0 +1,98 @@
+db.users
+[{
+	id:int,
+	name:String,
+	password:String,
+
+	user_assessments:
+			[{
+			  assess_id:int <objectId of assessments>,
+			  question_id:int <objectId of questions>,
+			  option_id:int <objectId of options>;
+			  user_answer:int
+			}]
+	
+}]
+
+db.assessments
+[{
+	
+	id:int,
+	name:String,
+	time:datetime,
+	
+
+	questions:
+		[{
+		id:int,
+		question_content:String,
+		correct_anwser:int,
+		is_image:boolean
+		}]
+
+	options:
+		[{
+		id:int,
+		option_content:String,
+		is_image:boolean,
+		}]
+	
+	
+}]
+
+
+*****************************Queries performed on Schema************************
+
+db.users.insert( { "id": "101","name": "tanvi"," password": "123456","user_assessment":{"id":"10","assessment_id":"1001","question_id":"200","option_id":"300","user_answer":"1"} } );
+WriteResult({ "nInserted" : 1 })
+
+db.assessments.insert( { "id": "1001","name": "c programming"," duration": "20","questions":{"id":"200","content":"if two strings identical then strcmp() returns?","correct_anw":"0"},"options":{"id":"300","content":"0"} } );
+WriteResult({ "nInserted" : 1 })
+
+db.users.find().pretty()
+{
+	"_id" : ObjectId("546754972e08549710dae2bc"),
+	"id" : "101",
+	"name" : "tanvi",
+	" password" : "123456",
+	"user_assessment" : {
+		"id" : "10",
+		"assessment_id" : "1001",
+		"question_id" : "200",
+		"option_id" : "300",
+		"user_answer" : "1"
+	}
+}
+{
+	"_id" : ObjectId("546ac7e20f7f2becc6ba2658"),
+	"id" : "102",
+	"name" : "sayali",
+	" password" : "123896",
+	"user_assessment" : {
+		"id" : "11",
+		"assessment_id" : "1001",
+		"question_id" : "200",
+		"option_id" : "300",
+		"user_answer" : "0"
+	}
+}
+ 
+
+db.assessments.find().pretty()
+{
+	"_id" : ObjectId("546756f62e08549710dae2bd"),
+	"id" : "1001",
+	"name" : "c programming",
+	" duration" : "20",
+	"questions" : {
+		"id" : "200",
+		"content" : "if two strings identical then strcmp() returns?",
+		"correct_anw" : "0"
+	},
+	"options" : {
+		"id" : "300",
+		"content" : "0"
+	}
+}
+
+

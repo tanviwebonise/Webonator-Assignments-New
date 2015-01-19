@@ -1,0 +1,9 @@
+				     MongoDB
+
+* MongoDB is an open source database that uses a document-oriented data model.It doesnt work on relations.
+* We have to create collections for storing data.There is key field  which represent attribute of collection.
+* For each collection there is _id object.We can create multiple collections within one collection.
+* It provised flexibility for accessing data.
+* Embedded documents and arrays reduce need for joins.
+*Database holds a set of collections.collection holds a set of documents.document is a set of key-value pairs.
+

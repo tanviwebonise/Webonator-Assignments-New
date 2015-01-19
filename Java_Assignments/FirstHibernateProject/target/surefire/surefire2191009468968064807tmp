@@ -1,0 +1,5 @@
+#surefire
+#Fri Jan 16 18:24:54 IST 2015
+user.dir=/home/webonise/Documents/hibernate/FirstHibernateProject
+localRepository=/home/webonise/.m2/repository
+basedir=/home/webonise/Documents/hibernate/FirstHibernateProject

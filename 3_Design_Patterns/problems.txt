@@ -1,0 +1,11 @@
+Problem Statements:
+1.The partitioning of a system into collaborating classes raises the problem of maintaining consistency among them. The problem is how to maintain consistency in a situation where one or more of the following scenarios hold:
+	-An abstraction has two aspects, one dependent on the other; encapsulating them separately allows to extend and reuse them.
+	-Changing one object requires changing others, but it is not clear in advance how many and which ones.
+	-An object should be able to notify others, without knowing in advance which ones they are.
+When exam section make changes in their database the notification should send to its dependents.
+
+2.The complexcity of system is more wehen user wish to access library functionality.like for library registratin he/she has to go to department then library and then librarian.
+again when user want to get books have to follow the same procedure.
+
+3.there is scenario where user wants access e-learning facility.where after getting perticular type of lecture he/she might wants some other tye of lecture so repeated objects get created here.  
